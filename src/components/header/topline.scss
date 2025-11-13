@@ -1,0 +1,31 @@
+.header-content {
+  margin-top: 42px;
+}
+
+.topline {
+  display: flex;
+  justify-content: space-between;
+}
+
+.c-header {
+  margin-bottom: 32px;
+  background-color: #fafafa;
+  border-bottom: 1px solid #c8c8ca;
+}
+
+.header-content {
+  margin-bottom: 33px;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 13px;
+  }
+  
+}
+
+@media screen and (max-width: 380px) {
+  html {
+    font-size: 12px;
+  }
+}

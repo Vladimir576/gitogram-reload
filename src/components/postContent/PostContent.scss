@@ -1,0 +1,70 @@
+::v-deep(.post-content__user-img--size) {
+  width: 44px;
+  height: 44px;
+}
+
+.x-container--widthMod {
+  max-width: 980px;
+  width: 100%;
+}
+
+.post-content {
+  border: 1px solid rgba(241, 241, 241, 1);
+  padding: 24px 20px 24px 20px;
+  border-radius: 5px;
+  &__title {
+    font-size: 26px;
+  }
+
+  &__text {
+    font-size: 14px;
+  }
+}
+
+.post-content-wrap {
+  border: 1px solid rgba(241, 241, 241, 1);
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.07);
+  border-radius: 7px;
+  padding: 24px 20px 24px 20px;
+  margin-bottom: 18px;
+}
+
+.c-toggler {
+  margin-bottom: 25px;
+}
+
+.c-post {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 0 0;
+}
+
+.toggler-comments__item-username {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.toggler-comments__item {
+  display: flex;
+  margin-bottom: 6px;
+}
+
+.toggler-comments_list {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 13px;
+  }
+  .x-container--widthMod {
+    max-width: 728px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .post_content__title {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,35 @@
+.custom-button {
+  min-width: 270px;
+  min-height: 44px;
+  background-color: rgba(49, 174, 84, 1);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  position: relative;
+
+  &.has-hover-text::after {
+    content: attr(data-hover-text);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  &:hover .custom-button__text {
+    opacity: 0;
+       transition: opacity 0.5s ease;
+  }
+
+  &.has-hover-text:hover::after {
+    opacity: 1;
+       transition: opacity 0.5s ease;
+  }
+
+  &.has-hover-text:hover {
+    background-color: rgba(158, 158, 158, 1);
+  }
+}

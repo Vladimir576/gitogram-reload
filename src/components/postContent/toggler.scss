@@ -1,0 +1,19 @@
+.toggler-button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 10px;
+
+  &__text {
+    margin-right: 5px;
+  }
+}
+
+.toggler-button__svg {
+  transform: rotate(180deg);
+}
+
+.toggler-button__svg--active {
+  transform: rotate(0deg);
+}

@@ -1,0 +1,13 @@
+.c-story {
+  max-width: 375px;
+  max-height: 667px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.story-content-wrapper {
+  display: flex;
+  flex-direction: column;
+//   align-items: center;
+}

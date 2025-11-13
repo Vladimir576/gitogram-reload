@@ -1,0 +1,56 @@
+#app {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+  overflow: hidden;
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.x-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 1220px) {
+  .x-container {
+    padding-left: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 13px;
+  }
+  .x-container {
+    width: 100%;
+    max-width: 728px;
+    padding-left: 20px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  html {
+    font-size: 12px;
+  }
+}
