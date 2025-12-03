@@ -1,37 +1,50 @@
 <template>
-  <div class="progress-line" :class="{ active }">
-    <div ref="indicator" class="progress-line__process"></div>
+  <div class="progress-line" :class="{ active: isActive }">
+    <div
+      @transitionend="
+        (e) => e.propertyName === 'width' && isActive && $emit('onFinish')
+      "
+      class="progress-line__process"
+    ></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ProgressLine",
+  props: { active: Boolean },
   emits: ["onFinish"],
+
   data() {
     return {
-      active: false,
+      isActive: false,
     };
   },
 
-  mounted() {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        this.active = true;
-      });
-    });
+  watch: {
+    active(newVal) {
+      if (newVal) {
+        this.restartAnimation();
+      } else {
+        this.isActive = false;
+      }
+    },
+  },
 
-    this.$refs.indicator.addEventListener("transitionend", this.emitOnFinish);
+
+  mounted() {
+    if (this.active) {
+      this.restartAnimation();
+    }
   },
-  beforeUnmount() {
-    this.$refs.indicator.removeEventListener(
-      "transitionend",
-      this.emitOnFinish
-    );
-  },
+
   methods: {
-    emitOnFinish() {
-      this.$emit("onFinish");
+    restartAnimation() {
+      this.isActive = false;
+      this.$nextTick(() => {
+        requestAnimationFrame(() => {
+          this.isActive = true;
+        });
+      });
     },
   },
 };

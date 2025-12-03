@@ -1,13 +1,9 @@
 <template>
   <div class="story-content">
         <div class="story-content__text-wrapper">
-    <div class="story-content__img">
-      <img :src="storyImg" alt="" class="story-content__img-media" />
-    </div>
+  
     <!-- <div class="story-content__text-wrapper"> -->
-      <div class="story-content__text">
-        {{ storyText }}
-      </div>
+      <div class="story-content__text--safe" v-html="storyText"> </div>
     </div>
   </div>
 </template>
@@ -18,8 +14,6 @@ export default {
   props: {
     storyText: {
       type: String,
-      default:
-        "For running on Mac you'll currently use your favorite text editor and terminal to edit and run apps. We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.",
     },
     storyImg: {
       type: String,

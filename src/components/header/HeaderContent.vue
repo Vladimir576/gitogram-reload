@@ -1,16 +1,26 @@
 <template>
-  <div :class="['header-content__item-user', headerContent__itemPos]">
-    <div :class="['header-content__item-photo', headerAvatar]">
-      <img
-        :src="userAvatar"
-        alt=""
-        class="header-content__item-img"
-        :class="size"
-      />
-    </div>
-    <div :class="['header-content__nickname', nicknameStyle]">
-      {{ nickname }}
-    </div>
+  <div
+    :class="[
+      'header-content__item-user',
+      headerContent__itemPos,
+      headerContent__Stories,
+    ]"
+  >
+    <router-link :to="getLink" class="reset-router-styles">
+      <div :class="['header-content__item-photo', headerAvatar]">
+        <img
+          :src="userAvatar"
+          alt=""
+          class="header-content__item-img"
+          :class="size"
+        />
+      </div>
+    </router-link>
+    <router-link :to="getLink" class="reset-router-styles">
+      <div :class="['header-content__nickname', nicknameStyle]">
+        {{ nickname }}
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -21,6 +31,12 @@
 <script>
 export default {
   name: "HeaderContent",
+
+  computed: {
+    getLink() {
+      return `/stories/${this.headerItemId}`;
+    },
+  },
 
   props: {
     nickname: {
@@ -41,11 +57,17 @@ export default {
     headerContent__itemPos: {
       type: String,
     },
+    headerContent__Stories: {
+      type: String,
+    },
     headerAvatar: {
       type: String,
     },
     nicknameStyle: {
       type: String,
+    },
+    headerItemId: {
+      type: [String, Number],
     },
   },
 };

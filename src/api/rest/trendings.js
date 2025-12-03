@@ -1,18 +1,10 @@
 import { makeRequest } from "../requests/requests"
 import { formattedDate } from "@/utils/dateAgo";
-export const getTrendings = (lang = 'javascript') => {
 
-    // console.log(lang);
-    // let now = new Date();
-    // let weekMS = 7 * 24 * 60 * 60 * 1000;
-    // console.log('before', now)
-    // let weekAgo = new Date(Date.now() - weekMS);
-    // let formattedDate = weekAgo.toISOString().split('T')[0];
+export const getTrendings = (lang = 'javascript') => {
+   
     let dateAnswer = formattedDate();
     console.log('formattedData', dateAnswer)
-
-
-    // console.log(weekMS)
 
     let params = new URLSearchParams();
     params.append('order', 'desc');
@@ -21,7 +13,7 @@ export const getTrendings = (lang = 'javascript') => {
     params.append('q', `language:${lang} created:>${dateAnswer}`);
 
     return makeRequest({
-        url: `/search/repositories?${params}`,
+        url: `/search/repositories?${params}`, // replace line
 
     })
 }

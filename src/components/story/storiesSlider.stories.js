@@ -1,5 +1,5 @@
 import "../progressLine/ProgressLine.vue"
-import Story from "../story/Story.vue"
+import Story from "./storiesSlider.vue"
 import ProgressLine from "../progressLine/ProgressLine.vue"
 import HeaderContent from "../header/HeaderContent.vue"
 import StoryContent from "../storyContent/StoryContent.vue"

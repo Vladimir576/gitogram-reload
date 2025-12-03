@@ -26,7 +26,7 @@
   >
     <template #post-content>
       <div class="post-content">
-        <h2 class="post-content__title">{{ item.language }}</h2>
+        <h2 class="post-content__title">{{ item.name }}</h2>
         <div class="post-content__text">
           <p>
             {{ item.description }}
@@ -48,22 +48,12 @@
 </style>
 
 <script>
-import { default as users } from "./user.json";
 import Topline from "../../components//header/Topline.vue";
 import Header from "../../components/header/Header.vue";
 import HeaderContent from "../../components/header/HeaderContent.vue";
 import PostContent from "../../components/postContent/PostContent.vue";
-import { default as infoList } from "../../pages/feeds/user.json";
-import * as api from "../../api";
-export default {
-  data() {
-    return {
-      users,
-      postConteiner: [],
-      itemsAPI: [],
-    };
-  },
 
+export default {
   components: {
     Topline,
     Header,
@@ -72,47 +62,39 @@ export default {
   },
 
   methods: {
-    postValues() {
-      for (let item of infoList) {
-        let userName = item.username;
-        let userTitle = item.posts[0].title;
-        let userText = item.posts[0].text;
-        let userStats = item.posts[0].stats;
-        let userAvatar = item.avatar;
-
-        this.postConteiner.push({
-          name: userName,
-          title: userTitle,
-          text: userText,
-          stats: userStats,
-          avatar: userAvatar,
-        });
-        // console.log(this.postConteiner);
-      }
-    },
-    getGitProps(itemsAPI) {
+    getGitProps(item) {
+      console.log(item.name);
       return {
-        nickname: itemsAPI.name,
-        userTitle: itemsAPI.language,
-        userDescription: itemsAPI.description,
-        starAmount: itemsAPI.stargazers_count,
-        forkAmount: itemsAPI.forks_count,
-        userAvatar: itemsAPI.owner.avatar_url,
+        nickname: item.owner.login,
+        userTitle: item.name,
+        userDescription: item.description,
+        starAmount: item.stargazers_count,
+        forkAmount: item.forks_count,
+        userAvatar: item.owner.avatar_url,
+        headerItemId: item.id,
       };
     },
   },
 
-  async created() {
-    api.trendings.getTrendings();
+  computed: {
+    itemsAPI() {
+      return this.$store.getters["user/getResponseDate"];
+    },
+  },
 
+  async created() {
     try {
-      const response = await api.trendings.getTrendings();
-      const responseData = response.data;
-      console.log("Respoonse", response);
-      console.log("ResponseDATA", responseData);
-      this.itemsAPI = responseData.items;
+      // if (this.itemsAPI.length > 0) {
+        // return
+      // }
+      await this.$store.dispatch("user/fetchTrendings");
+
+      console.log(this.getGitProps());
     } catch (error) {
-      console.log(error);
+      this.$store.commit("user/SET_ERROR", {
+        error: true,
+        message: error.message,
+      });
     }
   },
 };

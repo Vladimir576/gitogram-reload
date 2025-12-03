@@ -3,6 +3,9 @@
   align-items: center;
   &__title {
     font-size: 40px;
+    &--color{
+      color: white;
+    }
   }
   &__icons {
     cursor: pointer;
@@ -14,3 +17,5 @@
     object-fit: cover;
   }
 }
+
+// .topline-part__title
